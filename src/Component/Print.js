@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Condition from "./Condition";
+import { setData } from "../redux/FizzSlice";
+import { useDispatch, useSelector } from "react-redux";
 export default function Print({ checked }) {
-  const [list, setList] = useState(0);
-  const handlechange = (e) => {
-    setList(Number(e.target.value));
+  const dispatch = useDispatch();
+  const handlechange = (value) => {
+    dispatch(setData(Number(value)));
   };
+  const list = useSelector((state) => state.data.data);
   return (
     <>
       <ul>
@@ -17,7 +20,11 @@ export default function Print({ checked }) {
           }}
         >
           <label htmlFor="name">Enter number</label>
-          <input type="number" name="name" onChange={handlechange}></input>
+          <input
+            type="number"
+            name="name"
+            onChange={(e) => handlechange(e.target.value)}
+          ></input>
         </div>
         {Array.from(Array(list), (e, i) => {
           return (

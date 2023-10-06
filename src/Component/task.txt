@@ -1,1 +1,35 @@
 createSlice, configurationStore, Provider
+
+
+Chapter1:(Topic)
+
+Introdution to React.js
+Why use ReactJs
+React's Core Concept
+Setting up a react Project
+Building a simple React Component...
+
+Question: 
+1) wht is diff between lib and framework?
+2) why react is librabry?
+3) Virtual DOM vs REAL DOM
+4) Diff between npm and npx
+5) what is react fragmentation.
+6) Why we use const keyword in useState.
+7) what is use of useEffect?
+8) what is life cycle?
+9) class component
+10) why we are using two curly braces in react styled components
+11) What is react-router-dom and how can we use it ?
+12) Option variable in react-router-dom
+13) Lodash
+14) What is Redux and why we need it and how can we use it?
+15) what is diff between dependencies and devdependencies.
+16) whhat is express?
+17) Why we use import and require .
+18) what is use of V1 and V2 in api at server side?
+
+NOTE:
+npx create-react-app my-app
+npx create-react-app my-app with react-redux
+npm install @reduxjs/toolkit

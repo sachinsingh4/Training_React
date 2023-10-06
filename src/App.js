@@ -6,11 +6,17 @@ import Feedback from "./pages/Feedback";
 import Navbar from "./pages/Navbar";
 import Array from "./tasks/Array";
 import Radio from "./tasks/Radio";
+import Tesing from "./redux/Tesing";
+import Print from "./Component/Print";
+import { useState } from "react";
+import Checkbox from "./Component/Checkbox";
 function App() {
+  const [checked, setChecked] = useState("");
   return (
     <div>
       <BrowserRouter>
-        <Navbar />
+        <Checkbox checked={checked} setChecked={setChecked} />
+        <Print checked={checked} />
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/about" element={<About />}></Route>
