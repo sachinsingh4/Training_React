@@ -8,15 +8,29 @@ import Array from "./tasks/Array";
 import Radio from "./tasks/Radio";
 import Tesing from "./redux/Tesing";
 import Print from "./Component/Print";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Checkbox from "./Component/Checkbox";
+import { getAllEmployee } from "./services/connection";
+import PrintEmployee from "./tasks/PrintEmployee";
+import Form from "./tasks/Form";
 function App() {
-  const [checked, setChecked] = useState("");
+  const [address, setAddress] = useState("");
+  const [employeeData, setEmployeeData] = useState([]);
+  useEffect(() => {
+    getEmployeData(address);
+  }, []);
+
+  const getEmployeData = (city) => {
+    getAllEmployee(city).then((data) => {
+      setEmployeeData(data);
+    });
+  };
   return (
     <div>
       <BrowserRouter>
-        <Checkbox checked={checked} setChecked={setChecked} />
-        <Print checked={checked} />
+        {/* <Checkbox checked={checked} setChecked={setChecked} /> */}
+        <Form />
+        <PrintEmployee employeeData={employeeData} setAddress={setAddress} />
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/about" element={<About />}></Route>
@@ -30,21 +44,3 @@ function App() {
 }
 
 export default App;
-
-{
-  /* {c.age > 10 && c.isHappy ? "Good" : "bad"}
-      Hello World
-      {3 + 5}
-      {/* {c.forEach((name) => {
-        <h1>{name}</h1>;
-      })}
-      <Classcomponent /> */
-  {
-    /* <Checkbox checked={checked} setChecked={setChecked} />
-      <Print checked={checked} /> */
-  }
-}
-
-// const a = 5;
-// console.log(a);
-// const c = { name: "sachin", age: 20, isHappy: true };
