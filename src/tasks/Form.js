@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { fetchUserInfo } from "../redux/UserSlice";
 export default function Form() {
+  const dispatch = useDispatch();
   const [value, setvalue] = useState({
     ename: "",
     address: "",
@@ -23,6 +26,7 @@ export default function Form() {
           alert("Already Same data is present in the table");
         } else {
           alert("Data inserted successfully");
+          dispatch(fetchUserInfo(value.address));
         }
       })
       .catch((err) => console.log(err));

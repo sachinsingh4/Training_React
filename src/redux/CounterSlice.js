@@ -13,3 +13,4 @@ const createCounter = createSlice({
 });
 
 export default createCounter.reducer;
+export const { increment } = createCounter.actions;

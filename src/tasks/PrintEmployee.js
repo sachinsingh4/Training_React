@@ -1,8 +1,8 @@
 import React from "react";
 import "../pages/Print.css";
 import { Dropdown } from "semantic-ui-react";
-export default function PrintEmployee({ employeeData, setAddress }) {
-  console.log("hi", employeeData);
+import { useSelector } from "react-redux";
+export default function PrintEmployee({ setAddress }) {
   const addressOpt = [
     {
       key: "Pune",
@@ -21,6 +21,7 @@ export default function PrintEmployee({ employeeData, setAddress }) {
     },
   ];
 
+  const employeeData = useSelector((state) => state.user.user);
   return (
     <>
       <Dropdown

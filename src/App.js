@@ -13,24 +13,30 @@ import Checkbox from "./Component/Checkbox";
 import { getAllEmployee } from "./services/connection";
 import PrintEmployee from "./tasks/PrintEmployee";
 import Form from "./tasks/Form";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchUserInfo } from "./redux/UserSlice";
+import { increment } from "./redux/CounterSlice";
 function App() {
+  const value = useSelector((state) => state.counter.value);
+  console.log("value", value);
+  const dispatch = useDispatch();
   const [address, setAddress] = useState("");
-  const [employeeData, setEmployeeData] = useState([]);
   useEffect(() => {
-    getEmployeData(address);
-  }, []);
+    dispatch(fetchUserInfo(address));
+  }, [address]);
 
-  const getEmployeData = (city) => {
-    getAllEmployee(city).then((data) => {
-      setEmployeeData(data);
-    });
-  };
+  // const getEmployeData = (city) => {
+  //   getAllEmployee(city).then((data) => {
+  //     setEmployeeData(data);
+  //   });
+  // };
   return (
     <div>
+      <button onClick={() => dispatch(increment())}>+++</button>
       <BrowserRouter>
         {/* <Checkbox checked={checked} setChecked={setChecked} /> */}
         <Form />
-        <PrintEmployee employeeData={employeeData} setAddress={setAddress} />
+        <PrintEmployee setAddress={setAddress} />
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/about" element={<About />}></Route>
